@@ -1,0 +1,21 @@
+{
+  "name": "@taskproof/taskproof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "taskproof": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint src",
+    "test": "vitest run --root ../../ packages/taskproof/src"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "fflate": "^0.8.2",
+    "playwright": "^1.54.1",
+    "yaml": "^2.8.1",
+    "zod": "^4.1.5"
+  }
+}
