@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/taskproof" },
+    { "path": "./apps/report-ui" },
+    { "path": "./apps/demo-app" },
+    { "path": "./tests" }
+  ]
+}
