@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-04-18T20-27-53-125Z",
+    "id": "2026-04-18T20-36-16-588Z",
     "name": "Diagnostics sync failure",
     "specPath": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/demo/specs/diagnostics-sync.yaml",
-    "startedAt": "2026-04-18T20:27:53.125Z",
-    "finishedAt": "2026-04-18T20:27:54.663Z",
-    "durationMs": 1538,
+    "startedAt": "2026-04-18T20:36:16.588Z",
+    "finishedAt": "2026-04-18T20:36:18.557Z",
+    "durationMs": 1969,
     "status": "passed",
     "outputDir": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/artifacts/demo-eval"
   },
@@ -24,7 +24,7 @@
     "consoleErrorCount": 2,
     "networkFailureCount": 2,
     "screenshotCount": 5,
-    "durationMs": 1538,
+    "durationMs": 1969,
     "score": 100,
     "status": "passed"
   },
@@ -40,9 +40,9 @@
       "name": "1. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-04-18T20:27:53.286Z",
-      "finishedAt": "2026-04-18T20:27:53.492Z",
-      "durationMs": 206,
+      "startedAt": "2026-04-18T20:36:16.868Z",
+      "finishedAt": "2026-04-18T20:36:17.154Z",
+      "durationMs": 286,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"view-diagnostics\"]"
@@ -61,9 +61,9 @@
       "name": "2. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-04-18T20:27:53.493Z",
-      "finishedAt": "2026-04-18T20:27:53.694Z",
-      "durationMs": 201,
+      "startedAt": "2026-04-18T20:36:17.156Z",
+      "finishedAt": "2026-04-18T20:36:17.395Z",
+      "durationMs": 239,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"run-sync\"]"
@@ -82,9 +82,9 @@
       "name": "3. wait",
       "type": "wait",
       "status": "passed",
-      "startedAt": "2026-04-18T20:27:53.695Z",
-      "finishedAt": "2026-04-18T20:27:54.409Z",
-      "durationMs": 714,
+      "startedAt": "2026-04-18T20:36:17.397Z",
+      "finishedAt": "2026-04-18T20:36:18.146Z",
+      "durationMs": 749,
       "input": {
         "type": "wait",
         "ms": 600
@@ -103,9 +103,9 @@
       "name": "4. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-04-18T20:27:54.409Z",
-      "finishedAt": "2026-04-18T20:27:54.549Z",
-      "durationMs": 140,
+      "startedAt": "2026-04-18T20:36:18.147Z",
+      "finishedAt": "2026-04-18T20:36:18.342Z",
+      "durationMs": 195,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"sync-status\"]",
@@ -134,9 +134,9 @@
       "name": "5. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-04-18T20:27:54.550Z",
-      "finishedAt": "2026-04-18T20:27:54.662Z",
-      "durationMs": 112,
+      "startedAt": "2026-04-18T20:36:18.343Z",
+      "finishedAt": "2026-04-18T20:36:18.554Z",
+      "durationMs": 211,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"diagnostic-note\"]",
@@ -162,7 +162,7 @@
   "consoleEvents": [
     {
       "id": "console-001",
-      "timestamp": "2026-04-18T20:27:53.556Z",
+      "timestamp": "2026-04-18T20:36:17.216Z",
       "stepId": "step-002",
       "type": "error",
       "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -174,7 +174,7 @@
     },
     {
       "id": "console-002",
-      "timestamp": "2026-04-18T20:27:53.556Z",
+      "timestamp": "2026-04-18T20:36:17.216Z",
       "stepId": "step-002",
       "type": "error",
       "text": "TaskProof demo sync failed {status: 404, url: /api/sync}",
@@ -188,7 +188,7 @@
   "networkEvents": [
     {
       "id": "network-001",
-      "timestamp": "2026-04-18T20:27:53.556Z",
+      "timestamp": "2026-04-18T20:36:17.216Z",
       "stepId": "step-002",
       "kind": "http-error",
       "method": "POST",
@@ -198,7 +198,7 @@
     },
     {
       "id": "network-002",
-      "timestamp": "2026-04-18T20:27:53.556Z",
+      "timestamp": "2026-04-18T20:36:17.217Z",
       "stepId": "step-002",
       "kind": "requestfailed",
       "method": "POST",
@@ -211,8 +211,8 @@
     "specFile": "spec.json",
     "reportIndex": "report/index.html",
     "reportAssets": [
-      "report/assets/index-DRhQuf3B.css",
-      "report/assets/index-vTx_OkgK.js"
+      "report/assets/index-DBLpVgZ8.js",
+      "report/assets/index-DRhQuf3B.css"
     ],
     "screenshotsDir": "artifacts/screenshots",
     "domSnapshotsDir": "artifacts/dom",

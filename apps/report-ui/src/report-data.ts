@@ -247,8 +247,12 @@ function deriveScore(
   steps: EvidenceCounts,
   assertions: EvidenceCounts
 ): EvidenceSummary["score"] {
-  const earned = asNumber(rawScore?.earned) ?? assertions.passed ?? steps.passed;
-  const total = asNumber(rawScore?.total) ?? assertions.total ?? steps.total ?? 1;
+  const useAssertionScore = assertions.total > 0;
+  const earned =
+    asNumber(rawScore?.earned) ?? (useAssertionScore ? assertions.passed : steps.passed);
+  const totalCandidate =
+    asNumber(rawScore?.total) ?? (useAssertionScore ? assertions.total : steps.total);
+  const total = totalCandidate > 0 ? totalCandidate : 1;
   const explicitPercent = asNumber(rawScore?.percent);
   const percent = explicitPercent ?? Math.round((earned / total) * 100);
 

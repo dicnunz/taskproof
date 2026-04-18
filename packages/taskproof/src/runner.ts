@@ -281,8 +281,8 @@ export async function executeTaskProof(options: RunOptions): Promise<RunResult> 
         id: `console-${String(++consoleIndex).padStart(3, "0")}`,
         timestamp: new Date().toISOString(),
         stepId: currentStepId,
-        type: "pageerror",
-        text: error.stack ?? error.message
+        type: "error",
+        text: `Page error: ${error.stack ?? error.message}`
       });
     });
 
