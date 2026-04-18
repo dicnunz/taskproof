@@ -1,0 +1,10 @@
+name: Navigate directly to the Today view
+steps:
+  - type: navigate
+    url: '/?view=today'
+  - type: assertUrl
+    value: 'view=today'
+  - type: assertText
+    selector: '[data-testid="board-status"]'
+    text: '1 visible task in Today.'
+    match: exact

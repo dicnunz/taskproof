@@ -1,0 +1,15 @@
+name: Diagnostics sync failure
+steps:
+  - type: click
+    selector: '[data-testid="view-diagnostics"]'
+  - type: click
+    selector: '[data-testid="run-sync"]'
+  - type: wait
+    ms: 600
+  - type: assertText
+    selector: '[data-testid="sync-status"]'
+    text: 'Sync failed gracefully.'
+    match: exact
+  - type: assertText
+    selector: '[data-testid="diagnostic-note"]'
+    text: 'No auth or backend required.'

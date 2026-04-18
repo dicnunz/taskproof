@@ -1,0 +1,14 @@
+name: Inbox basics
+steps:
+  - type: assertVisible
+    selector: '[data-testid="view-inbox"]'
+  - type: assertText
+    selector: '[data-testid="board-status"]'
+    text: '3 visible tasks in Inbox.'
+    match: exact
+  - type: assertCount
+    selector: '[data-testid="task-card"]'
+    count: 3
+  - type: assertText
+    selector: '[data-testid="task-list"]'
+    text: 'Fix billing edge case'

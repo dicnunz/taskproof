@@ -1,0 +1,61 @@
+name: Demo Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: demo-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  demo-surface:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint demo app
+        run: npm --workspace @taskproof/demo-app run lint
+
+      - name: Typecheck demo app
+        run: npx tsc -p apps/demo-app/tsconfig.json --pretty false
+
+      - name: Typecheck demo tests
+        run: npx tsc -p tests/tsconfig.json --pretty false
+
+      - name: Validate committed demo specs
+        run: npx vitest run apps/demo-app/demo-specs.test.ts
+
+      - name: Build demo app
+        run: npm --workspace @taskproof/demo-app run build
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run demo app e2e coverage
+        run: npx playwright test tests/demo-app.e2e.spec.ts
+
+      - name: Build canonical demo eval output
+        run: npm run demo:eval
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-validation-artifacts
+          path: |
+            artifacts/demo-eval
+            playwright-report
+            test-results
+          if-no-files-found: ignore

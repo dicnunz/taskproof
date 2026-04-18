@@ -1,0 +1,37 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="640" rx="40" fill="#F4EFE8"/>
+  <rect x="64" y="72" width="208" height="120" rx="28" fill="#FFF9F1" stroke="#D9C9B6" stroke-width="2"/>
+  <text x="96" y="116" fill="#1F2937" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Task Spec</text>
+  <text x="96" y="148" fill="#6B7280" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">JSON or YAML</text>
+  <rect x="64" y="232" width="208" height="120" rx="28" fill="#FFF9F1" stroke="#D9C9B6" stroke-width="2"/>
+  <text x="96" y="276" fill="#1F2937" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Target URL</text>
+  <text x="96" y="308" fill="#6B7280" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Local or remote web app</text>
+  <rect x="366" y="152" width="240" height="160" rx="34" fill="#0F172A"/>
+  <text x="402" y="214" fill="#F8FAFC" font-size="28" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">TaskProof CLI</text>
+  <text x="402" y="252" fill="#CBD5E1" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Playwright runner</text>
+  <text x="402" y="282" fill="#CBD5E1" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Evidence capture</text>
+  <rect x="712" y="80" width="224" height="112" rx="28" fill="#FFF9F1" stroke="#D9C9B6" stroke-width="2"/>
+  <text x="744" y="124" fill="#1F2937" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">bundle.json</text>
+  <text x="744" y="156" fill="#6B7280" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Machine-readable evidence</text>
+  <rect x="712" y="224" width="224" height="112" rx="28" fill="#FFF9F1" stroke="#D9C9B6" stroke-width="2"/>
+  <text x="744" y="268" fill="#1F2937" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">report/index.html</text>
+  <text x="744" y="300" fill="#6B7280" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Interactive static report</text>
+  <rect x="712" y="368" width="224" height="112" rx="28" fill="#FFF9F1" stroke="#D9C9B6" stroke-width="2"/>
+  <text x="744" y="412" fill="#1F2937" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">taskproof-evidence.zip</text>
+  <text x="744" y="444" fill="#6B7280" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Portable rerun bundle</text>
+  <rect x="968" y="224" width="168" height="112" rx="28" fill="#0F172A"/>
+  <text x="1000" y="268" fill="#F8FAFC" font-size="22" font-weight="700" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">Report UI</text>
+  <text x="1000" y="300" fill="#CBD5E1" font-size="18" font-family="Avenir Next, Helvetica Neue, Segoe UI, sans-serif">React + Vite</text>
+  <path d="M272 132H366" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M272 292H366" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M606 232H712" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M606 232C666 232 652 136 712 136" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M606 232C666 232 652 424 712 424" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M936 280H968" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="366" cy="132" r="6" fill="#0F172A"/>
+  <circle cx="366" cy="292" r="6" fill="#0F172A"/>
+  <circle cx="712" cy="136" r="6" fill="#0F172A"/>
+  <circle cx="712" cy="232" r="6" fill="#0F172A"/>
+  <circle cx="712" cy="424" r="6" fill="#0F172A"/>
+  <circle cx="968" cy="280" r="6" fill="#0F172A"/>
+</svg>

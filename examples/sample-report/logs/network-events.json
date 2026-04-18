@@ -1,0 +1,22 @@
+[
+  {
+    "id": "network-001",
+    "timestamp": "2026-04-18T20:27:53.556Z",
+    "stepId": "step-002",
+    "kind": "http-error",
+    "method": "POST",
+    "url": "http://127.0.0.1:43173/api/sync",
+    "resourceType": "fetch",
+    "status": 404
+  },
+  {
+    "id": "network-002",
+    "timestamp": "2026-04-18T20:27:53.556Z",
+    "stepId": "step-002",
+    "kind": "requestfailed",
+    "method": "POST",
+    "url": "http://127.0.0.1:43173/api/sync",
+    "resourceType": "fetch",
+    "failureText": "net::ERR_ABORTED"
+  }
+]

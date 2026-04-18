@@ -1,0 +1,18 @@
+name: Add and complete task
+steps:
+  - type: fill
+    selector: '[data-testid="task-input"]'
+    value: 'Send launch note'
+  - type: press
+    selector: '[data-testid="task-input"]'
+    key: Enter
+  - type: assertText
+    selector: '[data-testid="task-list"]'
+    text: 'Send launch note'
+  - type: click
+    selector: '[data-testid="toggle-send-launch-note"]'
+  - type: click
+    selector: '[data-testid="view-done"]'
+  - type: assertText
+    selector: '[data-testid="task-list"]'
+    text: 'Send launch note'

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "1.0.0",
+  "run": {
+    "id": "2026-04-18T20-27-53-125Z",
+    "name": "Diagnostics sync failure",
+    "specPath": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/demo/specs/diagnostics-sync.yaml",
+    "startedAt": "2026-04-18T20:27:53.125Z",
+    "finishedAt": "2026-04-18T20:27:54.663Z",
+    "durationMs": 1538,
+    "status": "passed",
+    "outputDir": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/artifacts/demo-eval"
+  },
+  "target": {
+    "initialUrl": "http://127.0.0.1:43173/",
+    "finalUrl": "http://127.0.0.1:43173/?view=diagnostics",
+    "title": "TaskProof Demo App"
+  },
+  "summary": {
+    "totalSteps": 5,
+    "executedSteps": 5,
+    "passedSteps": 5,
+    "failedSteps": 0,
+    "assertionCount": 2,
+    "consoleErrorCount": 2,
+    "networkFailureCount": 2,
+    "screenshotCount": 5,
+    "durationMs": 1538,
+    "score": 100,
+    "status": "passed"
+  },
+  "rerun": {
+    "cwd": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local",
+    "command": "cd '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local' && npm run taskproof -- run --url 'http://127.0.0.1:43173/' --spec '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/demo/specs/diagnostics-sync.yaml' --out '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/artifacts/demo-eval'",
+    "scriptPath": "rerun.sh"
+  },
+  "stepResults": [
+    {
+      "id": "step-001",
+      "index": 0,
+      "name": "1. click",
+      "type": "click",
+      "status": "passed",
+      "startedAt": "2026-04-18T20:27:53.286Z",
+      "finishedAt": "2026-04-18T20:27:53.492Z",
+      "durationMs": 206,
+      "input": {
+        "type": "click",
+        "selector": "[data-testid=\"view-diagnostics\"]"
+      },
+      "url": "http://127.0.0.1:43173/?view=diagnostics",
+      "title": "TaskProof Demo App",
+      "assertions": [],
+      "artifacts": {
+        "screenshot": "artifacts/screenshots/step-001.png",
+        "domSnapshot": "artifacts/dom/step-001.html"
+      }
+    },
+    {
+      "id": "step-002",
+      "index": 1,
+      "name": "2. click",
+      "type": "click",
+      "status": "passed",
+      "startedAt": "2026-04-18T20:27:53.493Z",
+      "finishedAt": "2026-04-18T20:27:53.694Z",
+      "durationMs": 201,
+      "input": {
+        "type": "click",
+        "selector": "[data-testid=\"run-sync\"]"
+      },
+      "url": "http://127.0.0.1:43173/?view=diagnostics",
+      "title": "TaskProof Demo App",
+      "assertions": [],
+      "artifacts": {
+        "screenshot": "artifacts/screenshots/step-002.png",
+        "domSnapshot": "artifacts/dom/step-002.html"
+      }
+    },
+    {
+      "id": "step-003",
+      "index": 2,
+      "name": "3. wait",
+      "type": "wait",
+      "status": "passed",
+      "startedAt": "2026-04-18T20:27:53.695Z",
+      "finishedAt": "2026-04-18T20:27:54.409Z",
+      "durationMs": 714,
+      "input": {
+        "type": "wait",
+        "ms": 600
+      },
+      "url": "http://127.0.0.1:43173/?view=diagnostics",
+      "title": "TaskProof Demo App",
+      "assertions": [],
+      "artifacts": {
+        "screenshot": "artifacts/screenshots/step-003.png",
+        "domSnapshot": "artifacts/dom/step-003.html"
+      }
+    },
+    {
+      "id": "step-004",
+      "index": 3,
+      "name": "4. assertText",
+      "type": "assertText",
+      "status": "passed",
+      "startedAt": "2026-04-18T20:27:54.409Z",
+      "finishedAt": "2026-04-18T20:27:54.549Z",
+      "durationMs": 140,
+      "input": {
+        "type": "assertText",
+        "selector": "[data-testid=\"sync-status\"]",
+        "text": "Sync failed gracefully.",
+        "match": "exact"
+      },
+      "url": "http://127.0.0.1:43173/?view=diagnostics",
+      "title": "TaskProof Demo App",
+      "assertions": [
+        {
+          "kind": "text",
+          "passed": true,
+          "expected": "Sync failed gracefully.",
+          "actual": "Sync failed gracefully.",
+          "detail": "[data-testid=\"sync-status\"] equals \"Sync failed gracefully.\""
+        }
+      ],
+      "artifacts": {
+        "screenshot": "artifacts/screenshots/step-004.png",
+        "domSnapshot": "artifacts/dom/step-004.html"
+      }
+    },
+    {
+      "id": "step-005",
+      "index": 4,
+      "name": "5. assertText",
+      "type": "assertText",
+      "status": "passed",
+      "startedAt": "2026-04-18T20:27:54.550Z",
+      "finishedAt": "2026-04-18T20:27:54.662Z",
+      "durationMs": 112,
+      "input": {
+        "type": "assertText",
+        "selector": "[data-testid=\"diagnostic-note\"]",
+        "text": "No auth or backend required."
+      },
+      "url": "http://127.0.0.1:43173/?view=diagnostics",
+      "title": "TaskProof Demo App",
+      "assertions": [
+        {
+          "kind": "text",
+          "passed": true,
+          "expected": "No auth or backend required.",
+          "actual": "No auth or backend required.",
+          "detail": "[data-testid=\"diagnostic-note\"] contains \"No auth or backend required.\""
+        }
+      ],
+      "artifacts": {
+        "screenshot": "artifacts/screenshots/step-005.png",
+        "domSnapshot": "artifacts/dom/step-005.html"
+      }
+    }
+  ],
+  "consoleEvents": [
+    {
+      "id": "console-001",
+      "timestamp": "2026-04-18T20:27:53.556Z",
+      "stepId": "step-002",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://127.0.0.1:43173/api/sync",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "id": "console-002",
+      "timestamp": "2026-04-18T20:27:53.556Z",
+      "stepId": "step-002",
+      "type": "error",
+      "text": "TaskProof demo sync failed {status: 404, url: /api/sync}",
+      "location": {
+        "url": "http://127.0.0.1:43173/src/App.tsx",
+        "lineNumber": 154,
+        "columnNumber": 16
+      }
+    }
+  ],
+  "networkEvents": [
+    {
+      "id": "network-001",
+      "timestamp": "2026-04-18T20:27:53.556Z",
+      "stepId": "step-002",
+      "kind": "http-error",
+      "method": "POST",
+      "url": "http://127.0.0.1:43173/api/sync",
+      "resourceType": "fetch",
+      "status": 404
+    },
+    {
+      "id": "network-002",
+      "timestamp": "2026-04-18T20:27:53.556Z",
+      "stepId": "step-002",
+      "kind": "requestfailed",
+      "method": "POST",
+      "url": "http://127.0.0.1:43173/api/sync",
+      "resourceType": "fetch",
+      "failureText": "net::ERR_ABORTED"
+    }
+  ],
+  "artifacts": {
+    "specFile": "spec.json",
+    "reportIndex": "report/index.html",
+    "reportAssets": [
+      "report/assets/index-DRhQuf3B.css",
+      "report/assets/index-vTx_OkgK.js"
+    ],
+    "screenshotsDir": "artifacts/screenshots",
+    "domSnapshotsDir": "artifacts/dom",
+    "consoleLog": "logs/console-events.json",
+    "networkLog": "logs/network-events.json",
+    "zipFile": "taskproof-evidence.zip"
+  }
+}

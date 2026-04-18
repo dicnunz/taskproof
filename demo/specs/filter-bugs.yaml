@@ -1,0 +1,10 @@
+name: Filter bug stream
+steps:
+  - type: click
+    selector: '[data-testid="filter-bug"]'
+  - type: assertCount
+    selector: '[data-testid="task-card"]'
+    count: 1
+  - type: assertText
+    selector: '[data-testid="task-list"]'
+    text: 'Fix billing edge case'

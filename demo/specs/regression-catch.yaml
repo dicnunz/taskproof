@@ -1,0 +1,6 @@
+name: Regression catch
+steps:
+  - type: assertText
+    selector: '[data-testid="board-status"]'
+    text: '4 visible tasks in Inbox.'
+    match: exact

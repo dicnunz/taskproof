@@ -1,0 +1,12 @@
+name: Done board
+steps:
+  - type: click
+    selector: '[data-testid="view-done"]'
+  - type: assertUrl
+    value: 'view=done'
+  - type: assertCount
+    selector: '[data-testid="task-card"]'
+    count: 1
+  - type: assertText
+    selector: '[data-testid="task-list"]'
+    text: 'Ship release summary'
