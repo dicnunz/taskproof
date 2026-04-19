@@ -1,4 +1,4 @@
-name: Diagnostics sync failure
+name: Diagnostics sync captures backend failure
 steps:
   - type: click
     selector: '[data-testid="view-diagnostics"]'
@@ -12,4 +12,4 @@ steps:
     match: exact
   - type: assertText
     selector: '[data-testid="diagnostic-note"]'
-    text: 'No auth or backend required.'
+    text: 'No auth or backend required. Runtime failures stay visible.'

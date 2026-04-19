@@ -116,7 +116,9 @@ export default function App() {
   const [draft, setDraft] = useState("");
   const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
   const [syncState, setSyncState] = useState<"idle" | "running" | "failed" | "passed">("idle");
-  const [syncMessage, setSyncMessage] = useState("No background sync has run yet.");
+  const [syncMessage, setSyncMessage] = useState(
+    "The sync probe is idle. Trigger it to surface the deliberate backend failure."
+  );
 
   useEffect(() => {
     const handlePopState = (): void => {
@@ -181,7 +183,7 @@ export default function App() {
 
   async function runSync(): Promise<void> {
     setSyncState("running");
-    setSyncMessage("Running a background sync against the local demo endpoint.");
+    setSyncMessage("Running a local sync probe against the intentionally missing backend endpoint.");
 
     try {
       const response = await fetch("/api/sync", {
@@ -193,7 +195,7 @@ export default function App() {
       });
 
       if (!response.ok) {
-        const message = `Sync failed gracefully with HTTP ${response.status}.`;
+        const message = `Sync failed gracefully with HTTP ${response.status}. TaskProof should still capture the console and network evidence.`;
         console.error("TaskProof demo sync failed", {
           status: response.status,
           url: "/api/sync"
@@ -208,7 +210,7 @@ export default function App() {
     } catch (error) {
       console.error("TaskProof demo sync crashed", error);
       setSyncState("failed");
-      setSyncMessage("Sync failed gracefully because the demo endpoint is unavailable.");
+      setSyncMessage("Sync failed gracefully because the demo endpoint is unavailable, and the failure stayed inspectable.");
     }
   }
 
@@ -303,9 +305,11 @@ export default function App() {
               <article className="diagnostic-card">
                 <div className="card-label">Readiness notes</div>
                 <ul className="diagnostic-list">
-                  <li data-testid="diagnostic-note">No auth or backend required.</li>
+                  <li data-testid="diagnostic-note">
+                    No auth or backend required. Runtime failures stay visible.
+                  </li>
                   <li>UI state is fully local.</li>
-                  <li>Network failure path is intentionally observable.</li>
+                  <li>Network and console failure paths are intentionally observable.</li>
                 </ul>
               </article>
             </section>
@@ -406,7 +410,7 @@ export default function App() {
             <ul className="checklist">
               <li>Top-level view buttons have durable `data-testid` hooks.</li>
               <li>Task cards share `data-testid="task-card"` for count assertions.</li>
-              <li>The diagnostics view intentionally emits a failed network response.</li>
+              <li>The diagnostics view intentionally emits a failed request and console error.</li>
             </ul>
           </section>
 

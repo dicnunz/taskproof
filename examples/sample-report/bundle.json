@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-04-18T20-36-16-588Z",
-    "name": "Diagnostics sync failure",
-    "specPath": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/demo/specs/diagnostics-sync.yaml",
-    "startedAt": "2026-04-18T20:36:16.588Z",
-    "finishedAt": "2026-04-18T20:36:18.557Z",
-    "durationMs": 1969,
+    "id": "2026-04-19T02-41-10-196Z",
+    "name": "Diagnostics sync captures backend failure",
+    "specPath": "./demo/specs/diagnostics-sync.yaml",
+    "startedAt": "2026-04-19T02:41:10.196Z",
+    "finishedAt": "2026-04-19T02:41:12.439Z",
+    "durationMs": 2243,
     "status": "passed",
-    "outputDir": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/artifacts/demo-eval"
+    "outputDir": "./artifacts/demo-eval"
   },
   "target": {
     "initialUrl": "http://127.0.0.1:43173/",
@@ -24,13 +24,13 @@
     "consoleErrorCount": 2,
     "networkFailureCount": 2,
     "screenshotCount": 5,
-    "durationMs": 1969,
+    "durationMs": 2243,
     "score": 100,
     "status": "passed"
   },
   "rerun": {
-    "cwd": "/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local",
-    "command": "cd '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local' && npm run taskproof -- run --url 'http://127.0.0.1:43173/' --spec '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/demo/specs/diagnostics-sync.yaml' --out '/Users/nicdunz/Documents/Codex/2026-04-18-build-and-ship-a-polished-local/artifacts/demo-eval'",
+    "cwd": "/Users/nicdunz/Documents/Codex/2026-04-18-go-through-my-github-and-decide/repo_audit/taskproof",
+    "command": "npm run taskproof -- run --url 'http://127.0.0.1:43173/' --spec './demo/specs/diagnostics-sync.yaml' --out './artifacts/demo-eval'",
     "scriptPath": "rerun.sh"
   },
   "stepResults": [
@@ -40,9 +40,9 @@
       "name": "1. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-04-18T20:36:16.868Z",
-      "finishedAt": "2026-04-18T20:36:17.154Z",
-      "durationMs": 286,
+      "startedAt": "2026-04-19T02:41:10.411Z",
+      "finishedAt": "2026-04-19T02:41:10.751Z",
+      "durationMs": 340,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"view-diagnostics\"]"
@@ -61,9 +61,9 @@
       "name": "2. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-04-18T20:36:17.156Z",
-      "finishedAt": "2026-04-18T20:36:17.395Z",
-      "durationMs": 239,
+      "startedAt": "2026-04-19T02:41:10.752Z",
+      "finishedAt": "2026-04-19T02:41:11.010Z",
+      "durationMs": 258,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"run-sync\"]"
@@ -82,9 +82,9 @@
       "name": "3. wait",
       "type": "wait",
       "status": "passed",
-      "startedAt": "2026-04-18T20:36:17.397Z",
-      "finishedAt": "2026-04-18T20:36:18.146Z",
-      "durationMs": 749,
+      "startedAt": "2026-04-19T02:41:11.011Z",
+      "finishedAt": "2026-04-19T02:41:11.819Z",
+      "durationMs": 808,
       "input": {
         "type": "wait",
         "ms": 600
@@ -103,9 +103,9 @@
       "name": "4. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-04-18T20:36:18.147Z",
-      "finishedAt": "2026-04-18T20:36:18.342Z",
-      "durationMs": 195,
+      "startedAt": "2026-04-19T02:41:11.819Z",
+      "finishedAt": "2026-04-19T02:41:12.122Z",
+      "durationMs": 303,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"sync-status\"]",
@@ -134,13 +134,13 @@
       "name": "5. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-04-18T20:36:18.343Z",
-      "finishedAt": "2026-04-18T20:36:18.554Z",
-      "durationMs": 211,
+      "startedAt": "2026-04-19T02:41:12.123Z",
+      "finishedAt": "2026-04-19T02:41:12.439Z",
+      "durationMs": 316,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"diagnostic-note\"]",
-        "text": "No auth or backend required."
+        "text": "No auth or backend required. Runtime failures stay visible."
       },
       "url": "http://127.0.0.1:43173/?view=diagnostics",
       "title": "TaskProof Demo App",
@@ -148,9 +148,9 @@
         {
           "kind": "text",
           "passed": true,
-          "expected": "No auth or backend required.",
-          "actual": "No auth or backend required.",
-          "detail": "[data-testid=\"diagnostic-note\"] contains \"No auth or backend required.\""
+          "expected": "No auth or backend required. Runtime failures stay visible.",
+          "actual": "No auth or backend required. Runtime failures stay visible.",
+          "detail": "[data-testid=\"diagnostic-note\"] contains \"No auth or backend required. Runtime failures stay visible.\""
         }
       ],
       "artifacts": {
@@ -162,7 +162,7 @@
   "consoleEvents": [
     {
       "id": "console-001",
-      "timestamp": "2026-04-18T20:36:17.216Z",
+      "timestamp": "2026-04-19T02:41:10.810Z",
       "stepId": "step-002",
       "type": "error",
       "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -174,13 +174,13 @@
     },
     {
       "id": "console-002",
-      "timestamp": "2026-04-18T20:36:17.216Z",
+      "timestamp": "2026-04-19T02:41:10.810Z",
       "stepId": "step-002",
       "type": "error",
       "text": "TaskProof demo sync failed {status: 404, url: /api/sync}",
       "location": {
         "url": "http://127.0.0.1:43173/src/App.tsx",
-        "lineNumber": 154,
+        "lineNumber": 156,
         "columnNumber": 16
       }
     }
@@ -188,7 +188,7 @@
   "networkEvents": [
     {
       "id": "network-001",
-      "timestamp": "2026-04-18T20:36:17.216Z",
+      "timestamp": "2026-04-19T02:41:10.810Z",
       "stepId": "step-002",
       "kind": "http-error",
       "method": "POST",
@@ -198,7 +198,7 @@
     },
     {
       "id": "network-002",
-      "timestamp": "2026-04-18T20:36:17.217Z",
+      "timestamp": "2026-04-19T02:41:10.811Z",
       "stepId": "step-002",
       "kind": "requestfailed",
       "method": "POST",
@@ -211,8 +211,8 @@
     "specFile": "spec.json",
     "reportIndex": "report/index.html",
     "reportAssets": [
-      "report/assets/index-DBLpVgZ8.js",
-      "report/assets/index-DRhQuf3B.css"
+      "report/assets/index-45NXkAot.css",
+      "report/assets/index-DF6or_BO.js"
     ],
     "screenshotsDir": "artifacts/screenshots",
     "domSnapshotsDir": "artifacts/dom",

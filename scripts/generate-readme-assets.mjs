@@ -18,6 +18,10 @@ function npmCommand() {
   return process.platform === "win32" ? "npm.cmd" : "npm";
 }
 
+function ffmpegCommand() {
+  return process.env.FFMPEG_BIN ?? "ffmpeg";
+}
+
 async function runCommand(args) {
   await execFileAsync(npmCommand(), args, { cwd: rootDir });
 }
@@ -72,6 +76,36 @@ async function buildSampleReport() {
   await runCommand(["run", "demo:eval"]);
   await rm(sampleReportDir, { recursive: true, force: true });
   await cp(join(rootDir, "artifacts/demo-eval"), sampleReportDir, { recursive: true });
+  await writeSampleReportGuide();
+}
+
+async function writeSampleReportGuide() {
+  await writeFile(
+    join(sampleReportDir, "README.md"),
+    `# Sample Report
+
+This directory contains a committed real TaskProof run against the bundled Northstar Workboard demo.
+
+## What it proves
+
+The shipped spec passes because the UI handles the failing sync path gracefully, while TaskProof still captures the underlying failed request and console errors. That is the core product story.
+
+## Open locally
+
+- Open \`./report/index.html\` from disk to inspect the static report UI.
+- GitHub will show the HTML source, not the live rendered report.
+
+## Evidence files
+
+- \`bundle.json\`: machine-readable source-of-truth bundle
+- \`spec.json\`: normalized task spec used for the run
+- \`logs/console-events.json\`: captured console errors
+- \`logs/network-events.json\`: failed request evidence
+- \`rerun.sh\`: deterministic rerun script from the repo root
+- \`taskproof-evidence.zip\`: zipped copy of the full run
+`,
+    "utf8"
+  );
 }
 
 async function renderSocialPreview(browser) {
@@ -156,7 +190,7 @@ async function recordDemoGif(browser) {
   const palettePath = join(videoDir, "palette.png");
   const gifPath = join(assetsDir, "demo.gif");
 
-  await execFileAsync("/opt/homebrew/bin/ffmpeg", [
+  await execFileAsync(ffmpegCommand(), [
     "-y",
     "-i",
     videoPath,
@@ -164,7 +198,7 @@ async function recordDemoGif(browser) {
     "fps=10,scale=1200:-1:flags=lanczos,palettegen",
     palettePath
   ]);
-  await execFileAsync("/opt/homebrew/bin/ffmpeg", [
+  await execFileAsync(ffmpegCommand(), [
     "-y",
     "-i",
     videoPath,

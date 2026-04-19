@@ -2,6 +2,7 @@
   "name": "@taskproof/demo-app",
   "version": "0.1.0",
   "private": true,
+  "description": "Bundled deterministic target app used to prove TaskProof locally and in CI.",
   "type": "module",
   "scripts": {
     "dev": "vite",

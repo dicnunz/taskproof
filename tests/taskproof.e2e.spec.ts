@@ -51,6 +51,6 @@ test("taskproof generates a local report and evidence bundle", async ({ baseURL,
 
   await page.goto(pathToFileURL(join(outputDir, "report/index.html")).toString());
   await expect(page.getByText("TaskProof", { exact: true })).toBeVisible();
-  await expect(page.getByText("Diagnostics sync failure")).toBeVisible();
+  await expect(page.getByText("Diagnostics sync captures backend failure")).toBeVisible();
   await expect(page.getByText("Rerun command")).toBeVisible();
 });

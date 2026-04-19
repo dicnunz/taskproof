@@ -51,6 +51,28 @@ function quoted(value: string): string {
   return `'${value.replaceAll("'", "'\\''")}'`;
 }
 
+function displayPathFromCwd(targetPath: string): string {
+  const cwd = resolve(process.cwd());
+  const resolvedTarget = resolve(targetPath);
+  const relativeToCwd = relative(cwd, resolvedTarget).replaceAll("\\", "/");
+
+  if (relativeToCwd === "") {
+    return ".";
+  }
+
+  if (!relativeToCwd.startsWith("../") && relativeToCwd !== "..") {
+    return relativeToCwd.startsWith("./") ? relativeToCwd : `./${relativeToCwd}`;
+  }
+
+  return resolvedTarget;
+}
+
+function buildRerunCommand(targetUrl: string, specPath: string, outputDir: string): string {
+  return `npm run taskproof -- run --url ${quoted(targetUrl)} --spec ${quoted(
+    displayPathFromCwd(specPath)
+  )} --out ${quoted(displayPathFromCwd(outputDir))}`;
+}
+
 function resolveOutputDir(spec: TaskSpec, specPath: string, outputDir: string | undefined): string {
   if (outputDir) {
     return resolve(process.cwd(), outputDir);
@@ -371,16 +393,14 @@ export async function executeTaskProof(options: RunOptions): Promise<RunResult> 
     const finishedAt = new Date();
     const durationMs = finishedAt.getTime() - startedAt.getTime();
     const summary = buildSummary(spec, stepResults, consoleEvents, networkEvents, durationMs);
-    const rerunCommand = `cd ${quoted(process.cwd())} && npm run taskproof -- run --url ${quoted(
-      targetUrl
-    )} --spec ${quoted(specPath)} --out ${quoted(resolvedOutputDir)}`;
+    const rerunCommand = buildRerunCommand(targetUrl, specPath, resolvedOutputDir);
 
     await writeFile(join(resolvedOutputDir, "spec.json"), `${JSON.stringify(spec, null, 2)}\n`, "utf8");
     await writeFile(consoleLogPath, `${JSON.stringify(consoleEvents, null, 2)}\n`, "utf8");
     await writeFile(networkLogPath, `${JSON.stringify(networkEvents, null, 2)}\n`, "utf8");
     await writeFile(
       rerunScriptPath,
-      `#!/usr/bin/env bash\nset -euo pipefail\n${rerunCommand}\n`,
+      `#!/usr/bin/env bash\nset -euo pipefail\ncd ${quoted(process.cwd())}\n${rerunCommand}\n`,
       "utf8"
     );
     await chmod(rerunScriptPath, 0o755);
@@ -390,12 +410,12 @@ export async function executeTaskProof(options: RunOptions): Promise<RunResult> 
       run: {
         id: runId,
         name: spec.name,
-        specPath,
+        specPath: displayPathFromCwd(specPath),
         startedAt: startedAt.toISOString(),
         finishedAt: finishedAt.toISOString(),
         durationMs,
         status: summary.status,
-        outputDir: resolvedOutputDir
+        outputDir: displayPathFromCwd(resolvedOutputDir)
       },
       target: {
         initialUrl: targetUrl,
@@ -404,7 +424,7 @@ export async function executeTaskProof(options: RunOptions): Promise<RunResult> 
       },
       summary,
       rerun: {
-        cwd: process.cwd(),
+        cwd: resolve(process.cwd()),
         command: rerunCommand,
         scriptPath: relativePath(resolvedOutputDir, rerunScriptPath)
       },

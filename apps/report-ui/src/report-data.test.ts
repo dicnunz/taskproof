@@ -43,7 +43,7 @@ describe("buildTimelineItems", () => {
     const timeline = buildTimelineItems(sampleEvidence);
 
     expect(timeline.some((item) => item.kind === "step")).toBe(true);
-    expect(timeline.some((item) => item.kind === "assertion" && item.status === "failed")).toBe(true);
+    expect(timeline.some((item) => item.kind === "assertion")).toBe(true);
     expect(timeline.some((item) => item.kind === "console")).toBe(true);
     expect(timeline.some((item) => item.kind === "network" && item.status === "failed")).toBe(true);
   });
@@ -51,11 +51,32 @@ describe("buildTimelineItems", () => {
 
 describe("collectFailureReasons", () => {
   it("surfaces root causes from failed assertions and runtime evidence", () => {
-    const reasons = collectFailureReasons(sampleEvidence);
+    const stepFailureEvidence = normalizeEvidence({
+      run: {
+        name: "Failure payload"
+      },
+      steps: [
+        {
+          title: "Check release banner",
+          type: "assertText",
+          status: "failed",
+          reason: "Release banner is missing.",
+          assertions: [
+            {
+              label: "Release banner is visible",
+              status: "failed",
+              message: "Expected release banner to be visible."
+            }
+          ]
+        }
+      ]
+    });
+    const stepReasons = collectFailureReasons(stepFailureEvidence);
+    const runtimeReasons = collectFailureReasons(sampleEvidence);
 
-    expect(reasons.some((reason) => reason.kind === "step")).toBe(true);
-    expect(reasons.some((reason) => reason.kind === "assertion")).toBe(true);
-    expect(reasons.some((reason) => reason.kind === "console")).toBe(true);
-    expect(reasons.some((reason) => reason.kind === "network")).toBe(true);
+    expect(stepReasons.some((reason) => reason.kind === "step")).toBe(true);
+    expect(stepReasons.some((reason) => reason.kind === "assertion")).toBe(true);
+    expect(runtimeReasons.some((reason) => reason.kind === "console")).toBe(true);
+    expect(runtimeReasons.some((reason) => reason.kind === "network")).toBe(true);
   });
 });

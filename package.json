@@ -2,7 +2,11 @@
   "name": "taskproof",
   "version": "0.1.0",
   "private": true,
+  "description": "Evidence-first UI task evaluation harness for local web apps.",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -11,12 +15,14 @@
     "taskproof": "tsx ./packages/taskproof/src/cli.ts",
     "demo:app": "npm --workspace @taskproof/demo-app run dev -- --host 127.0.0.1 --port 43173 --strictPort",
     "demo:eval": "node ./scripts/run-demo-eval.mjs",
+    "showcase:refresh": "node ./scripts/generate-readme-assets.mjs",
     "dev": "npm --workspace @taskproof/report-ui run dev",
     "build": "tsc -b && npm run build --workspaces --if-present",
     "lint": "eslint .",
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "validate": "npm run lint && npm run typecheck && npm run test && npm run e2e && npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",

@@ -1,7 +1,7 @@
 import { createServer, type Server } from "node:http";
 import { mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
-import { join, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -187,6 +187,65 @@ steps:
     expect(bundle.stepResults).toHaveLength(2);
     expect(bundle.stepResults[1]?.status).toBe("failed");
     expect(bundle.stepResults[1]?.failure?.detail).toContain("equals");
+  });
+
+  it("prints clean help output without Commander sentinel noise", async () => {
+    const stdout: string[] = [];
+    const stderr: string[] = [];
+
+    const exitCode = await runCli(["run", "--help"], {
+      stdout: {
+        write(message) {
+          stdout.push(message);
+        }
+      },
+      stderr: {
+        write(message) {
+          stderr.push(message);
+        }
+      }
+    });
+
+    expect(exitCode).toBe(0);
+    expect(stdout.join("")).toContain("Usage: taskproof run [options]");
+    expect(stdout.join("")).toContain("Examples:");
+    expect(stdout.join("")).not.toContain("(outputHelp)");
+    expect(stderr.join("")).toBe("");
+  });
+
+  it("uses repo-relative rerun metadata for repo-local specs and outputs", async () => {
+    const { baseUrl } = await createDemoServer(servers);
+    const sandbox = await mkdtemp(join(process.cwd(), ".taskproof-cli-local-"));
+    cleanupTargets.push(sandbox);
+    const specPath = join(sandbox, "task.yaml");
+    const outputDir = join(sandbox, "output");
+
+    await writeFile(
+      specPath,
+      `
+name: relative metadata
+steps:
+  - type: navigate
+    url: /start
+  - type: assertVisible
+    selector: "#title"
+`,
+      "utf8"
+    );
+
+    const exitCode = await runCli(["run", "--url", `${baseUrl}/`, "--spec", specPath, "--out", outputDir]);
+
+    expect(exitCode).toBe(0);
+
+    const bundle = await readBundle(outputDir);
+    expect(bundle.run.specPath).toBe(`./${relative(process.cwd(), specPath).replaceAll("\\", "/")}`);
+    expect(bundle.run.outputDir).toBe(`./${relative(process.cwd(), outputDir).replaceAll("\\", "/")}`);
+    expect(bundle.rerun.command).not.toContain("cd ");
+    expect(bundle.rerun.command).toContain(`--spec './${relative(process.cwd(), specPath).replaceAll("\\", "/")}'`);
+    expect(bundle.rerun.command).toContain(`--out './${relative(process.cwd(), outputDir).replaceAll("\\", "/")}'`);
+
+    const rerunScript = await readFile(join(outputDir, "rerun.sh"), "utf8");
+    expect(rerunScript).toContain(`cd '${process.cwd()}'`);
   });
 });
 

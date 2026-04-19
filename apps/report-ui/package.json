@@ -2,6 +2,7 @@
   "name": "@taskproof/report-ui",
   "version": "0.1.0",
   "private": true,
+  "description": "Static React report renderer for TaskProof evidence bundles.",
   "type": "module",
   "scripts": {
     "dev": "vite",

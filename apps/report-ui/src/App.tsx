@@ -10,7 +10,13 @@ import {
   isSuccessfulVerdict,
   loadEvidence
 } from "./report-data";
-import type { EvidenceStatus, FailureReason, TimelineItem, TimelineKind } from "./types";
+import type {
+  EvidenceStatus,
+  FailureReason,
+  TaskProofEvidence,
+  TimelineItem,
+  TimelineKind
+} from "./types";
 
 type StatusFilter = "all" | "passed" | "failed";
 type Tone = "success" | "failure" | "active" | "muted";
@@ -79,6 +85,56 @@ function copyText(value: string): Promise<void> {
   return navigator.clipboard.writeText(value);
 }
 
+function pluralize(count: number, singular: string, plural = `${singular}s`): string {
+  return count === 1 ? singular : plural;
+}
+
+function runtimeIssueCount(report: TaskProofEvidence | null): number {
+  if (!report) {
+    return 0;
+  }
+
+  return report.summary.consoleErrors + report.summary.networkFailures;
+}
+
+function buildHeroSummary(report: TaskProofEvidence | null): string {
+  if (!report) {
+    return "Evidence payload missing.";
+  }
+
+  const issues = runtimeIssueCount(report);
+
+  if (isSuccessfulVerdict(report.summary.verdict)) {
+    if (issues > 0) {
+      return `Task assertions passed, but ${issues} runtime ${pluralize(issues, "issue")} were still captured for review.`;
+    }
+
+    return "Task completed cleanly with stable evidence.";
+  }
+
+  if (issues > 0) {
+    return "Run failed and captured runtime issues for root-cause review.";
+  }
+
+  return "Run failed with captured evidence for root-cause review.";
+}
+
+function buildRuntimeNotice(report: TaskProofEvidence | null): string | null {
+  if (!report) {
+    return null;
+  }
+
+  const consoleErrors = report.summary.consoleErrors;
+  const networkFailures = report.summary.networkFailures;
+  const issues = consoleErrors + networkFailures;
+
+  if (issues === 0) {
+    return null;
+  }
+
+  return `${issues} runtime ${pluralize(issues, "issue")} captured: ${consoleErrors} console ${pluralize(consoleErrors, "error")} and ${networkFailures} network ${pluralize(networkFailures, "failure")}.`;
+}
+
 export default function App() {
   const { report, errors, source } = loadEvidence();
   const timeline = report ? buildTimelineItems(report) : [];
@@ -107,6 +163,8 @@ export default function App() {
     console: timeline.filter((item) => item.kind === "console").length,
     network: timeline.filter((item) => item.kind === "network").length
   };
+  const runtimeNotice = buildRuntimeNotice(report);
+  const runtimeIssues = runtimeIssueCount(report);
 
   useEffect(() => {
     const nextId = selectInitialTimelineItem(visibleTimeline);
@@ -150,13 +208,7 @@ export default function App() {
         <div className="hero-copy">
           <div className="eyebrow">TaskProof</div>
           <h1>{report?.run.name ?? "TaskProof report"}</h1>
-          <p className="hero-summary">
-            {report
-              ? isSuccessfulVerdict(report.summary.verdict)
-                ? "Task completed cleanly with stable evidence."
-                : "Run failed with captured evidence for root-cause review."
-              : "Evidence payload missing."}
-          </p>
+          <p className="hero-summary">{buildHeroSummary(report)}</p>
           <dl className="meta-grid">
             <MetaRow label="Target" value={report?.run.targetUrl ?? "Not provided"} mono />
             <MetaRow label="Spec" value={report?.run.specPath ?? "Not provided"} mono />
@@ -180,7 +232,9 @@ export default function App() {
             <span>{report?.summary.score.label ?? "score"}</span>
           </div>
           <div className="score-caption">
-            {report ? `${report.summary.score.earned} / ${report.summary.score.total}` : "0 / 0"} passed
+            {report
+              ? `${report.summary.score.earned} / ${report.summary.score.total} ${report.summary.score.label} passed`
+              : "0 / 0 checks passed"}
           </div>
         </div>
       </header>
@@ -207,13 +261,13 @@ export default function App() {
           tone={statusTone(report?.summary.assertions.failed ? "failed" : "passed")}
         />
         <MetricCard
-          label="Console"
+          label="Console Errors"
           value={String(report?.summary.consoleErrors ?? 0)}
           detail="error entries"
           tone={statusTone((report?.summary.consoleErrors ?? 0) > 0 ? "failed" : "passed")}
         />
         <MetricCard
-          label="Network"
+          label="Network Failures"
           value={String(report?.summary.networkFailures ?? 0)}
           detail="failed requests"
           tone={statusTone((report?.summary.networkFailures ?? 0) > 0 ? "failed" : "passed")}
@@ -230,6 +284,20 @@ export default function App() {
         <section className="notice-panel">
           <strong>Evidence load issue</strong>
           <p>{errors[0]}</p>
+        </section>
+      ) : null}
+
+      {runtimeNotice ? (
+        <section className="notice-panel notice-panel--warning">
+          <strong>
+            {isSuccessfulVerdict(report?.summary.verdict ?? "unknown")
+              ? "Spec passed with runtime issues"
+              : "Runtime issues captured"}
+          </strong>
+          <p>
+            {runtimeNotice}
+            {runtimeIssues > 0 ? " TaskProof keeps these signals visible even when the task assertions pass." : ""}
+          </p>
         </section>
       ) : null}
 
@@ -371,8 +439,10 @@ export default function App() {
           <section className="surface-panel">
             <div className="panel-header">
               <div>
-                <div className="panel-heading">Failure reasons</div>
-                <p className="panel-subtitle">Direct causes surfaced from failed steps and events.</p>
+                <div className="panel-heading">Captured issues</div>
+                <p className="panel-subtitle">
+                  Direct causes surfaced from failed steps, console errors, and network failures.
+                </p>
               </div>
               <div className="count-chip">{failureReasons.length}</div>
             </div>

@@ -20,8 +20,16 @@ export async function runCli(args: string[], io: CliIo = defaultIo): Promise<num
     .name("taskproof")
     .description("Evidence-first UI task evaluation harness")
     .exitOverride();
+  program.configureOutput({
+    writeOut(message) {
+      io.stdout.write(message);
+    },
+    writeErr(message) {
+      io.stderr.write(message);
+    }
+  });
 
-  program
+  const runCommand = program
     .command("run")
     .description("Run a task spec against a target URL and produce evidence")
     .requiredOption("--url <url>", "Target URL")
@@ -52,10 +60,29 @@ export async function runCli(args: string[], io: CliIo = defaultIo): Promise<num
       }
     });
 
+  runCommand.addHelpText(
+    "after",
+    `
+Examples:
+  $ taskproof run --url http://127.0.0.1:43173 --spec ./demo/specs/diagnostics-sync.yaml --out ./artifacts/demo-eval
+  $ taskproof run --url http://127.0.0.1:3000 --spec ./specs/login-smoke.yaml --headed
+
+Output:
+  bundle.json            machine-readable evidence bundle
+  report/index.html      self-contained static HTML report
+  rerun.sh               deterministic rerun script
+  taskproof-evidence.zip zipped run directory
+`
+  );
+
   try {
     await program.parseAsync(["node", "taskproof", ...args]);
   } catch (error) {
     if (error instanceof CommanderError) {
+      if (error.code === "commander.helpDisplayed" || error.code === "commander.version") {
+        return 0;
+      }
+
       io.stderr.write(`${error.message}\n`);
       return error.exitCode;
     }

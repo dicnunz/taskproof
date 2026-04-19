@@ -1,5 +1,5 @@
 {
-  "name": "Diagnostics sync failure",
+  "name": "Diagnostics sync captures backend failure",
   "steps": [
     {
       "type": "click",
@@ -22,7 +22,7 @@
     {
       "type": "assertText",
       "selector": "[data-testid=\"diagnostic-note\"]",
-      "text": "No auth or backend required."
+      "text": "No auth or backend required. Runtime failures stay visible."
     }
   ]
 }

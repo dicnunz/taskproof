@@ -281,6 +281,13 @@ pre,
   background: var(--surface);
 }
 
+.notice-panel--warning {
+  border-color: rgba(180, 83, 9, 0.22);
+  background:
+    linear-gradient(180deg, rgba(245, 158, 11, 0.08), rgba(255, 255, 255, 0.9)),
+    var(--surface);
+}
+
 .notice-panel strong,
 .panel-heading {
   display: block;
