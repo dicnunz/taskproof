@@ -9,6 +9,8 @@ Give it a target URL and a JSON or YAML spec. TaskProof runs the flow in Playwri
 - a deterministic rerun command and script
 - a zipped archive of the full run
 
+![TaskProof evidence flow](./examples/assets/generated/taskproof-hero.png)
+
 ![TaskProof demo](./examples/assets/demo.gif)
 
 ## Why it lands
@@ -182,6 +184,7 @@ Generated showcase assets live in [`examples/assets`](./examples/assets):
 
 - `taskproof-logo.svg`
 - `social-preview.png`
+- `generated/taskproof-hero.png`
 - `demo-app.png`
 - `report-overview.png`
 - `demo.gif`
