@@ -1,6 +1,6 @@
 {
   "name": "taskproof",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "Evidence-first UI task evaluation harness for local web apps.",
   "type": "module",

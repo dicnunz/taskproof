@@ -1,6 +1,6 @@
 {
   "name": "@taskproof/taskproof",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "CLI runner that turns web UI task specs into inspectable evidence bundles and static reports.",
   "type": "module",
