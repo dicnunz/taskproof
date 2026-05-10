@@ -11,6 +11,13 @@ Give it a target URL and a JSON or YAML spec. TaskProof runs the flow in Playwri
 
 If TaskProof saves you debugging time, the smallest support path is the $5 Codex run receipt: <https://nicdunz.gumroad.com/l/smrimu>.
 
+For a written no-call audit of a TaskProof report bundle or UI task spec, use the paid setup audit path:
+
+- Mini audit: <https://nicdunz.gumroad.com/l/agent-workflow-mini-audit>
+- Full workflow audit: <https://nicdunz.gumroad.com/l/agent-workflow-audit>
+
+Redacted report bundles, task specs, screenshots, and public repo links only. Do not send app credentials, private auth flows, tokens, session cookies, secrets, production data, or personal data. No call required.
+
 ![TaskProof evidence flow](./examples/assets/generated/taskproof-hero.png)
 
 ![TaskProof demo](./examples/assets/demo.gif)

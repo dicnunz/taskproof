@@ -128,6 +128,11 @@ steps:
     expect(report).toContain("runner success");
     expect(report).toContain("Optional $5 support receipt");
     expect(report).toContain("https://nicdunz.gumroad.com/l/smrimu");
+    expect(report).toContain("Mini audit $149");
+    expect(report).toContain("https://nicdunz.gumroad.com/l/agent-workflow-mini-audit");
+    expect(report).toContain("Workflow audit $750");
+    expect(report).toContain("https://nicdunz.gumroad.com/l/agent-workflow-audit");
+    expect(report).toContain("No app credentials");
   });
 
   it("returns a failing exit code and stops after the first failed step", async () => {
@@ -235,6 +240,9 @@ steps:
     expect(exitCode).toBe(0);
     expect(stdout.join("")).toContain("Support TaskProof");
     expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/smrimu");
+    expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/agent-workflow-mini-audit");
+    expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/agent-workflow-audit");
+    expect(stdout.join("")).toContain("No app credentials");
     expect(stderr.join("")).toBe("");
   });
 

@@ -4,6 +4,8 @@ import { Command, CommanderError } from "commander";
 import { executeTaskProof } from "./runner.js";
 
 const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
+const MINI_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
+const WORKFLOW_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
 export interface CliIo {
   stdout: {
@@ -18,6 +20,9 @@ export function supportText(): string {
   return [
     "Support TaskProof:",
     `- Optional $5 Codex run receipt: ${SUPPORT_RECEIPT_URL}`,
+    `- Mini audit for a redacted TaskProof report bundle or UI task spec: ${MINI_AUDIT_URL}`,
+    `- Full workflow audit for a redacted UI proof pipeline: ${WORKFLOW_AUDIT_URL}`,
+    "- Redacted bundles/specs/screenshots and public repo links only. No app credentials, private auth flows, tokens, session cookies, production data, or call required.",
     "- Use it if TaskProof saved debugging time or made a UI task review easier."
   ].join("\n");
 }

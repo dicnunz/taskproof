@@ -8,6 +8,8 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const reportDistDir = join(repoRoot, "apps/report-ui/dist");
 const fallbackAssetPath = "report/assets/report.css";
 const supportReceiptUrl = "https://nicdunz.gumroad.com/l/smrimu";
+const miniAuditUrl = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
+const workflowAuditUrl = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
 async function copyDirectory(sourceDir: string, targetDir: string): Promise<void> {
   await mkdir(targetDir, { recursive: true });
@@ -187,12 +189,17 @@ function ensureSupportFooter(html: string): string {
     font-family: "Avenir Next", "Segoe UI Variable", "Helvetica Neue", sans-serif;
   }
   .taskproof-support-footer p { margin: 4px 0 0; color: #5b6679; }
-  .taskproof-support-footer a { display: inline-flex; margin-top: 12px; border: 1px solid rgba(37, 99, 235, 0.22); border-radius: 999px; background: rgba(37, 99, 235, 0.12); color: #2563eb; padding: 10px 14px; font-weight: 800; text-decoration: none; }
+  .taskproof-support-footer .taskproof-support-links { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 12px; }
+  .taskproof-support-footer a { display: inline-flex; border: 1px solid rgba(37, 99, 235, 0.22); border-radius: 999px; background: rgba(37, 99, 235, 0.12); color: #2563eb; padding: 10px 14px; font-weight: 800; text-decoration: none; }
 </style>
 <footer class="taskproof-support-footer">
   <strong>Support TaskProof</strong>
-  <p>Optional $5 receipt for teams that used this report to make a UI debugging or review decision. Reports stay local and ungated.</p>
-  <a href="${supportReceiptUrl}" target="_blank" rel="noreferrer">Optional $5 support receipt</a>
+  <p>Optional support and written audits for redacted report bundles or UI task specs. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
+  <div class="taskproof-support-links">
+    <a href="${supportReceiptUrl}" target="_blank" rel="noreferrer">Optional $5 support receipt</a>
+    <a href="${miniAuditUrl}" target="_blank" rel="noreferrer">Mini audit $149</a>
+    <a href="${workflowAuditUrl}" target="_blank" rel="noreferrer">Workflow audit $750</a>
+  </div>
 </footer>`;
 
   return html.replace("</body>", `${footer}\n  </body>`);
@@ -396,9 +403,13 @@ function renderFallbackReport(bundle: EvidenceBundle): string {
       <footer class="panel section support-panel">
         <div>
           <h2>Support TaskProof</h2>
-          <p class="muted">Optional $5 receipt for teams that used this report to make a UI debugging or review decision. Reports stay local and ungated.</p>
+          <p class="muted">Optional support and written audits for redacted report bundles or UI task specs. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
         </div>
-        <a href="${supportReceiptUrl}">Optional $5 support receipt</a>
+        <div class="support-links">
+          <a href="${supportReceiptUrl}">Optional $5 support receipt</a>
+          <a href="${miniAuditUrl}">Mini audit $149</a>
+          <a href="${workflowAuditUrl}">Workflow audit $750</a>
+        </div>
       </footer>
     </main>
   </body>

@@ -48,6 +48,8 @@ const STATUS_LABELS: Record<StatusFilter, string> = {
   failed: "Failed"
 };
 const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
+const MINI_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
+const WORKFLOW_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
 function statusTone(status: EvidenceStatus): Tone {
   if (status === "passed") {
@@ -521,13 +523,22 @@ export default function App() {
         <div>
           <div className="panel-heading">Support TaskProof</div>
           <p>
-            Optional $5 receipt for teams that used this report to make a UI
-            debugging or review decision. Reports stay local and ungated.
+            Optional support and written audits for redacted report bundles or
+            UI task specs. No app credentials, private auth flows, tokens,
+            session cookies, production data, call, or gated report access.
           </p>
         </div>
-        <a href={SUPPORT_RECEIPT_URL} target="_blank" rel="noreferrer">
-          Optional $5 support receipt
-        </a>
+        <div className="support-links">
+          <a href={SUPPORT_RECEIPT_URL} target="_blank" rel="noreferrer">
+            Optional $5 support receipt
+          </a>
+          <a href={MINI_AUDIT_URL} target="_blank" rel="noreferrer">
+            Mini audit $149
+          </a>
+          <a href={WORKFLOW_AUDIT_URL} target="_blank" rel="noreferrer">
+            Workflow audit $750
+          </a>
+        </div>
       </footer>
     </div>
   );

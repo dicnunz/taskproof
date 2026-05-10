@@ -57,4 +57,13 @@ test("taskproof generates a local report and evidence bundle", async ({ baseURL,
     "href",
     "https://nicdunz.gumroad.com/l/smrimu"
   );
+  await expect(page.getByRole("link", { name: "Mini audit $149" })).toHaveAttribute(
+    "href",
+    "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit"
+  );
+  await expect(page.getByRole("link", { name: "Workflow audit $750" })).toHaveAttribute(
+    "href",
+    "https://nicdunz.gumroad.com/l/agent-workflow-audit"
+  );
+  await expect(page.getByText("No app credentials")).toBeVisible();
 });
