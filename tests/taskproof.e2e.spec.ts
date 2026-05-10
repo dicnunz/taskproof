@@ -69,6 +69,9 @@ test("taskproof generates a local report and evidence bundle", async ({ baseURL,
     "href",
     "https://nicdunz.gumroad.com/l/agent-workflow-audit"
   );
-  await expect(page.getByText("does not provide account access")).toBeVisible();
+  await expect(page.getByText("provide account access")).toBeVisible();
+  await expect(page.getByText("public actions stay human-approved")).toBeVisible();
+  await expect(page.getByText("does not fix the Codex Chrome plugin")).toBeVisible();
+  await expect(page.getByText("legal, financial, or security advice")).toBeVisible();
   await expect(page.getByText("No app credentials")).toBeVisible();
 });

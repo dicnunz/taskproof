@@ -134,7 +134,10 @@ steps:
     expect(report).toContain("https://nicdunz.gumroad.com/l/agent-workflow-mini-audit");
     expect(report).toContain("Workflow audit $750");
     expect(report).toContain("https://nicdunz.gumroad.com/l/agent-workflow-audit");
-    expect(report).toContain("does not provide account access");
+    expect(report.toLowerCase()).toContain("provide account access");
+    expect(report.toLowerCase()).toContain("public actions stay human-approved");
+    expect(report.toLowerCase()).toContain("does not fix the codex chrome plugin");
+    expect(report.toLowerCase()).toContain("legal, financial, or security advice");
     expect(report).toContain("No app credentials");
   });
 
@@ -246,7 +249,10 @@ steps:
     expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/agent-browser-operator-os");
     expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/agent-workflow-mini-audit");
     expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/agent-workflow-audit");
-    expect(stdout.join("")).toContain("does not provide account access");
+    expect(stdout.join("").toLowerCase()).toContain("provide account access");
+    expect(stdout.join("").toLowerCase()).toContain("public actions stay human-approved");
+    expect(stdout.join("").toLowerCase()).toContain("does not fix the codex chrome plugin");
+    expect(stdout.join("").toLowerCase()).toContain("legal, financial, or security advice");
     expect(stdout.join("")).toContain("No app credentials");
     expect(stderr.join("")).toBe("");
   });

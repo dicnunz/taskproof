@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-05-10T06-45-37-724Z",
+    "id": "2026-05-10T06-49-36-481Z",
     "name": "Diagnostics sync captures backend failure",
     "specPath": "./demo/specs/diagnostics-sync.yaml",
-    "startedAt": "2026-05-10T06:45:37.724Z",
-    "finishedAt": "2026-05-10T06:45:39.276Z",
-    "durationMs": 1552,
+    "startedAt": "2026-05-10T06:49:36.481Z",
+    "finishedAt": "2026-05-10T06:49:38.235Z",
+    "durationMs": 1754,
     "status": "passed",
     "outputDir": "./artifacts/demo-eval"
   },
@@ -24,7 +24,7 @@
     "consoleErrorCount": 2,
     "networkFailureCount": 2,
     "screenshotCount": 5,
-    "durationMs": 1552,
+    "durationMs": 1754,
     "score": 100,
     "status": "passed"
   },
@@ -40,9 +40,9 @@
       "name": "1. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-05-10T06:45:37.888Z",
-      "finishedAt": "2026-05-10T06:45:38.111Z",
-      "durationMs": 223,
+      "startedAt": "2026-05-10T06:49:36.729Z",
+      "finishedAt": "2026-05-10T06:49:36.986Z",
+      "durationMs": 258,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"view-diagnostics\"]"
@@ -61,9 +61,9 @@
       "name": "2. click",
       "type": "click",
       "status": "passed",
-      "startedAt": "2026-05-10T06:45:38.112Z",
-      "finishedAt": "2026-05-10T06:45:38.298Z",
-      "durationMs": 186,
+      "startedAt": "2026-05-10T06:49:36.987Z",
+      "finishedAt": "2026-05-10T06:49:37.216Z",
+      "durationMs": 229,
       "input": {
         "type": "click",
         "selector": "[data-testid=\"run-sync\"]"
@@ -82,9 +82,9 @@
       "name": "3. wait",
       "type": "wait",
       "status": "passed",
-      "startedAt": "2026-05-10T06:45:38.298Z",
-      "finishedAt": "2026-05-10T06:45:39.053Z",
-      "durationMs": 755,
+      "startedAt": "2026-05-10T06:49:37.217Z",
+      "finishedAt": "2026-05-10T06:49:37.959Z",
+      "durationMs": 742,
       "input": {
         "type": "wait",
         "ms": 600
@@ -103,9 +103,9 @@
       "name": "4. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-05-10T06:45:39.053Z",
-      "finishedAt": "2026-05-10T06:45:39.157Z",
-      "durationMs": 104,
+      "startedAt": "2026-05-10T06:49:37.959Z",
+      "finishedAt": "2026-05-10T06:49:38.108Z",
+      "durationMs": 149,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"sync-status\"]",
@@ -134,9 +134,9 @@
       "name": "5. assertText",
       "type": "assertText",
       "status": "passed",
-      "startedAt": "2026-05-10T06:45:39.157Z",
-      "finishedAt": "2026-05-10T06:45:39.275Z",
-      "durationMs": 118,
+      "startedAt": "2026-05-10T06:49:38.108Z",
+      "finishedAt": "2026-05-10T06:49:38.234Z",
+      "durationMs": 126,
       "input": {
         "type": "assertText",
         "selector": "[data-testid=\"diagnostic-note\"]",
@@ -162,7 +162,7 @@
   "consoleEvents": [
     {
       "id": "console-001",
-      "timestamp": "2026-05-10T06:45:38.173Z",
+      "timestamp": "2026-05-10T06:49:37.038Z",
       "stepId": "step-002",
       "type": "error",
       "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -174,7 +174,7 @@
     },
     {
       "id": "console-002",
-      "timestamp": "2026-05-10T06:45:38.174Z",
+      "timestamp": "2026-05-10T06:49:37.038Z",
       "stepId": "step-002",
       "type": "error",
       "text": "TaskProof demo sync failed {status: 404, url: /api/sync}",
@@ -188,7 +188,7 @@
   "networkEvents": [
     {
       "id": "network-001",
-      "timestamp": "2026-05-10T06:45:38.173Z",
+      "timestamp": "2026-05-10T06:49:37.038Z",
       "stepId": "step-002",
       "kind": "http-error",
       "method": "POST",
@@ -198,7 +198,7 @@
     },
     {
       "id": "network-002",
-      "timestamp": "2026-05-10T06:45:38.174Z",
+      "timestamp": "2026-05-10T06:49:37.038Z",
       "stepId": "step-002",
       "kind": "requestfailed",
       "method": "POST",
@@ -212,7 +212,7 @@
     "reportIndex": "report/index.html",
     "reportAssets": [
       "report/assets/index-BiIl81PM.css",
-      "report/assets/index-D7NMaZCX.js"
+      "report/assets/index-D1CZrDuj.js"
     ],
     "screenshotsDir": "artifacts/screenshots",
     "domSnapshotsDir": "artifacts/dom",

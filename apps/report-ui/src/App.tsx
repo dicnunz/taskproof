@@ -524,12 +524,15 @@ export default function App() {
         <div>
           <div className="panel-heading">Support TaskProof</div>
           <p>
-            Optional support, a self-serve browser/account/public-action control
-            kit, and written audits for redacted report bundles or UI task specs.
-            The kit covers lanes, approvals, proof, handoffs, and go/no-go checks;
-            it does not provide account access, custom setup, calls, or guaranteed
-            browser automation. No app credentials, private auth flows, tokens,
-            session cookies, production data, call, or gated report access.
+            Optional support, self-serve browser/account/public-action control
+            templates, and written audits for redacted report bundles or UI task
+            specs. Operator OS covers approval lanes, proof, handoffs, and
+            go/no-go checks; public actions stay human-approved. It does not
+            provide account access and does not fix the Codex Chrome plugin,
+            guarantee browser automation, include custom setup, include calls,
+            or provide legal, financial, or security advice. No app credentials,
+            private auth flows, tokens, session cookies, production data, call,
+            or gated report access.
           </p>
         </div>
         <div className="support-links">

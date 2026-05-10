@@ -24,7 +24,8 @@ export function supportText(): string {
     `- Agent Browser Operator OS self-serve kit for browser/account/public-action control templates: ${OPERATOR_OS_URL}`,
     `- Mini audit for a redacted TaskProof report bundle or UI task spec: ${MINI_AUDIT_URL}`,
     `- Full workflow audit for a redacted UI proof pipeline: ${WORKFLOW_AUDIT_URL}`,
-    "- Kit covers lanes, approvals, proof, handoffs, and go/no-go checks. It does not provide account access, custom setup, calls, or guaranteed browser automation.",
+    "- Operator OS covers approval lanes, proof, handoffs, and go/no-go checks. Public actions stay human-approved.",
+    "- It does not provide account access and does not fix the Codex Chrome plugin, guarantee browser automation, include custom setup, include calls, or provide legal, financial, or security advice.",
     "- Redacted bundles/specs/screenshots and public repo links only. No app credentials, private auth flows, tokens, session cookies, production data, or call required.",
     "- Use it if TaskProof saved debugging time or made a UI task review easier."
   ].join("\n");

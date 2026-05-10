@@ -195,7 +195,7 @@ function ensureSupportFooter(html: string): string {
 </style>
 <footer class="taskproof-support-footer">
   <strong>Support TaskProof</strong>
-  <p>Optional support, a self-serve browser/account/public-action control kit, and written audits for redacted report bundles or UI task specs. The kit covers lanes, approvals, proof, handoffs, and go/no-go checks; it does not provide account access, custom setup, calls, or guaranteed browser automation. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
+  <p>Optional support, self-serve browser/account/public-action control templates, and written audits for redacted report bundles or UI task specs. Operator OS covers approval lanes, proof, handoffs, and go/no-go checks; public actions stay human-approved. It does not provide account access and does not fix the Codex Chrome plugin, guarantee browser automation, include custom setup, include calls, or provide legal, financial, or security advice. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
   <div class="taskproof-support-links">
     <a href="${supportReceiptUrl}" target="_blank" rel="noreferrer">Optional $5 support receipt</a>
     <a href="${operatorOsUrl}" target="_blank" rel="noreferrer">Operator OS kit $39</a>
@@ -405,7 +405,7 @@ function renderFallbackReport(bundle: EvidenceBundle): string {
       <footer class="panel section support-panel">
         <div>
           <h2>Support TaskProof</h2>
-          <p class="muted">Optional support, a self-serve browser/account/public-action control kit, and written audits for redacted report bundles or UI task specs. The kit covers lanes, approvals, proof, handoffs, and go/no-go checks; it does not provide account access, custom setup, calls, or guaranteed browser automation. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
+          <p class="muted">Optional support, self-serve browser/account/public-action control templates, and written audits for redacted report bundles or UI task specs. Operator OS covers approval lanes, proof, handoffs, and go/no-go checks; public actions stay human-approved. It does not provide account access and does not fix the Codex Chrome plugin, guarantee browser automation, include custom setup, include calls, or provide legal, financial, or security advice. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
         </div>
         <div class="support-links">
           <a href="${supportReceiptUrl}">Optional $5 support receipt</a>
