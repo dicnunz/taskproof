@@ -53,4 +53,8 @@ test("taskproof generates a local report and evidence bundle", async ({ baseURL,
   await expect(page.getByText("TaskProof", { exact: true })).toBeVisible();
   await expect(page.getByText("Diagnostics sync captures backend failure")).toBeVisible();
   await expect(page.getByText("Rerun command")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Optional $5 support receipt" })).toHaveAttribute(
+    "href",
+    "https://nicdunz.gumroad.com/l/smrimu"
+  );
 });

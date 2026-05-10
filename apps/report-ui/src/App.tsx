@@ -47,6 +47,7 @@ const STATUS_LABELS: Record<StatusFilter, string> = {
   passed: "Passed",
   failed: "Failed"
 };
+const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
 
 function statusTone(status: EvidenceStatus): Tone {
   if (status === "passed") {
@@ -515,6 +516,19 @@ export default function App() {
           </section>
         </aside>
       </main>
+
+      <footer className="support-panel">
+        <div>
+          <div className="panel-heading">Support TaskProof</div>
+          <p>
+            Optional $5 receipt for teams that used this report to make a UI
+            debugging or review decision. Reports stay local and ungated.
+          </p>
+        </div>
+        <a href={SUPPORT_RECEIPT_URL} target="_blank" rel="noreferrer">
+          Optional $5 support receipt
+        </a>
+      </footer>
     </div>
   );
 }

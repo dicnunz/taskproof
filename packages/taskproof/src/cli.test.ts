@@ -126,6 +126,8 @@ steps:
 
     const report = await readFile(join(outputDir, "report", "index.html"), "utf8");
     expect(report).toContain("runner success");
+    expect(report).toContain("Optional $5 support receipt");
+    expect(report).toContain("https://nicdunz.gumroad.com/l/smrimu");
   });
 
   it("returns a failing exit code and stops after the first failed step", async () => {

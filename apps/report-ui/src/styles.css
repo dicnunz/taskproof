@@ -631,6 +631,43 @@ pre,
   color: var(--ink-soft);
 }
 
+.support-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
+}
+
+.support-panel p {
+  margin: 4px 0 0;
+  max-width: 72ch;
+  color: var(--ink-soft);
+}
+
+.support-panel a {
+  flex: 0 0 auto;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 10px 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.support-panel a:hover,
+.support-panel a:focus-visible {
+  border-color: rgba(37, 99, 235, 0.42);
+  outline: 3px solid rgba(37, 99, 235, 0.12);
+  outline-offset: 2px;
+}
+
 @keyframes reveal {
   from {
     opacity: 0;
@@ -685,6 +722,7 @@ pre,
 
   .command-panel,
   .panel-header,
+  .support-panel,
   .detail-title-row,
   .screenshot-caption {
     flex-direction: column;

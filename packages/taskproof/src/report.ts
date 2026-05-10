@@ -7,6 +7,7 @@ import type { EvidenceBundle } from "./model.js";
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const reportDistDir = join(repoRoot, "apps/report-ui/dist");
 const fallbackAssetPath = "report/assets/report.css";
+const supportReceiptUrl = "https://nicdunz.gumroad.com/l/smrimu";
 
 async function copyDirectory(sourceDir: string, targetDir: string): Promise<void> {
   await mkdir(targetDir, { recursive: true });
@@ -167,6 +168,34 @@ function injectBundle(template: string, bundle: EvidenceBundle): string {
     '<script id="taskproof-evidence" type="application/json"></script>',
     `<script id="taskproof-evidence" type="application/json">${payloadJson}</script>`
   );
+}
+
+function ensureSupportFooter(html: string): string {
+  if (html.includes(supportReceiptUrl)) {
+    return html;
+  }
+
+  const footer = `<style>
+  .taskproof-support-footer {
+    width: min(1480px, calc(100vw - 32px));
+    margin: 0 auto 40px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 20px 22px;
+    color: #223042;
+    font-family: "Avenir Next", "Segoe UI Variable", "Helvetica Neue", sans-serif;
+  }
+  .taskproof-support-footer p { margin: 4px 0 0; color: #5b6679; }
+  .taskproof-support-footer a { display: inline-flex; margin-top: 12px; border: 1px solid rgba(37, 99, 235, 0.22); border-radius: 999px; background: rgba(37, 99, 235, 0.12); color: #2563eb; padding: 10px 14px; font-weight: 800; text-decoration: none; }
+</style>
+<footer class="taskproof-support-footer">
+  <strong>Support TaskProof</strong>
+  <p>Optional $5 receipt for teams that used this report to make a UI debugging or review decision. Reports stay local and ungated.</p>
+  <a href="${supportReceiptUrl}" target="_blank" rel="noreferrer">Optional $5 support receipt</a>
+</footer>`;
+
+  return html.replace("</body>", `${footer}\n  </body>`);
 }
 
 async function inlineBuiltAssets(template: string): Promise<string> {
@@ -363,6 +392,14 @@ function renderFallbackReport(bundle: EvidenceBundle): string {
           </tbody>
         </table>
       </section>
+
+      <footer class="panel section support-panel">
+        <div>
+          <h2>Support TaskProof</h2>
+          <p class="muted">Optional $5 receipt for teams that used this report to make a UI debugging or review decision. Reports stay local and ungated.</p>
+        </div>
+        <a href="${supportReceiptUrl}">Optional $5 support receipt</a>
+      </footer>
     </main>
   </body>
 </html>`;
@@ -433,10 +470,14 @@ th, td { text-align: left; padding: 10px 0; border-top: 1px solid rgba(218, 203,
 th { color: var(--muted); font-size: 0.84rem; font-weight: 600; padding-top: 0; border-top: 0; }
 td + td, th + th { padding-left: 12px; }
 a { color: inherit; }
+.support-panel { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.support-panel a { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-strong); padding: 10px 14px; font-weight: 700; text-decoration: none; }
 @media (max-width: 720px) {
   main { width: min(100vw - 16px, 1180px); margin-top: 12px; }
   .hero, .section { padding: 18px; }
   .step { padding: 16px; }
+  .support-panel { display: block; }
+  .support-panel a { display: inline-flex; margin-top: 12px; }
 }
 `;
 
@@ -471,7 +512,7 @@ export async function writeStaticReport(
 
     const templatePath = join(reportDistDir, "index.html");
     const html = await readFile(templatePath, "utf8");
-    const rendered = await inlineBuiltAssets(injectBundle(html, bundle));
+    const rendered = ensureSupportFooter(await inlineBuiltAssets(injectBundle(html, bundle)));
     const reportPath = join(reportDir, "index.html");
 
     await writeFile(reportPath, rendered, "utf8");
