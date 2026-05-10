@@ -213,6 +213,29 @@ steps:
     expect(stderr.join("")).toBe("");
   });
 
+  it("prints the optional support receipt link", async () => {
+    const stdout: string[] = [];
+    const stderr: string[] = [];
+
+    const exitCode = await runCli(["support"], {
+      stdout: {
+        write(message) {
+          stdout.push(message);
+        }
+      },
+      stderr: {
+        write(message) {
+          stderr.push(message);
+        }
+      }
+    });
+
+    expect(exitCode).toBe(0);
+    expect(stdout.join("")).toContain("Support TaskProof");
+    expect(stdout.join("")).toContain("https://nicdunz.gumroad.com/l/smrimu");
+    expect(stderr.join("")).toBe("");
+  });
+
   it("uses repo-relative rerun metadata for repo-local specs and outputs", async () => {
     const { baseUrl } = await createDemoServer(servers);
     const sandbox = await mkdtemp(join(process.cwd(), ".taskproof-cli-local-"));

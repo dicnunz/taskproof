@@ -3,6 +3,8 @@ import { Command, CommanderError } from "commander";
 
 import { executeTaskProof } from "./runner.js";
 
+const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
+
 export interface CliIo {
   stdout: {
     write(message: string): void;
@@ -10,6 +12,14 @@ export interface CliIo {
   stderr: {
     write(message: string): void;
   };
+}
+
+export function supportText(): string {
+  return [
+    "Support TaskProof:",
+    `- Optional $5 Codex run receipt: ${SUPPORT_RECEIPT_URL}`,
+    "- Use it if TaskProof saved debugging time or made a UI task review easier."
+  ].join("\n");
 }
 
 export async function runCli(args: string[], io: CliIo = defaultIo): Promise<number> {
@@ -28,6 +38,13 @@ export async function runCli(args: string[], io: CliIo = defaultIo): Promise<num
       io.stderr.write(message);
     }
   });
+
+  program
+    .command("support")
+    .description("Show the optional support receipt link")
+    .action(() => {
+      io.stdout.write(`${supportText()}\n`);
+    });
 
   const runCommand = program
     .command("run")

@@ -1,9 +1,13 @@
 {
   "name": "@taskproof/taskproof",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "CLI runner that turns web UI task specs into inspectable evidence bundles and static reports.",
   "type": "module",
+  "funding": {
+    "type": "custom",
+    "url": "https://nicdunz.gumroad.com/l/smrimu"
+  },
   "bin": {
     "taskproof": "./dist/cli.js"
   },

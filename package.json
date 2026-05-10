@@ -1,9 +1,13 @@
 {
   "name": "taskproof",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Evidence-first UI task evaluation harness for local web apps.",
   "type": "module",
+  "funding": {
+    "type": "custom",
+    "url": "https://nicdunz.gumroad.com/l/smrimu"
+  },
   "engines": {
     "node": ">=20"
   },
