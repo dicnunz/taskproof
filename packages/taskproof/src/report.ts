@@ -8,6 +8,7 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const reportDistDir = join(repoRoot, "apps/report-ui/dist");
 const fallbackAssetPath = "report/assets/report.css";
 const supportReceiptUrl = "https://nicdunz.gumroad.com/l/smrimu";
+const operatorOsUrl = "https://nicdunz.gumroad.com/l/agent-browser-operator-os";
 const miniAuditUrl = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
 const workflowAuditUrl = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
@@ -194,9 +195,10 @@ function ensureSupportFooter(html: string): string {
 </style>
 <footer class="taskproof-support-footer">
   <strong>Support TaskProof</strong>
-  <p>Optional support and written audits for redacted report bundles or UI task specs. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
+  <p>Optional support, a self-serve browser/account/public-action control kit, and written audits for redacted report bundles or UI task specs. The kit covers lanes, approvals, proof, handoffs, and go/no-go checks; it does not provide account access, custom setup, calls, or guaranteed browser automation. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
   <div class="taskproof-support-links">
     <a href="${supportReceiptUrl}" target="_blank" rel="noreferrer">Optional $5 support receipt</a>
+    <a href="${operatorOsUrl}" target="_blank" rel="noreferrer">Operator OS kit $39</a>
     <a href="${miniAuditUrl}" target="_blank" rel="noreferrer">Mini audit $149</a>
     <a href="${workflowAuditUrl}" target="_blank" rel="noreferrer">Workflow audit $750</a>
   </div>
@@ -403,10 +405,11 @@ function renderFallbackReport(bundle: EvidenceBundle): string {
       <footer class="panel section support-panel">
         <div>
           <h2>Support TaskProof</h2>
-          <p class="muted">Optional support and written audits for redacted report bundles or UI task specs. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
+          <p class="muted">Optional support, a self-serve browser/account/public-action control kit, and written audits for redacted report bundles or UI task specs. The kit covers lanes, approvals, proof, handoffs, and go/no-go checks; it does not provide account access, custom setup, calls, or guaranteed browser automation. No app credentials, private auth flows, tokens, session cookies, production data, call, or gated report access.</p>
         </div>
         <div class="support-links">
           <a href="${supportReceiptUrl}">Optional $5 support receipt</a>
+          <a href="${operatorOsUrl}">Operator OS kit $39</a>
           <a href="${miniAuditUrl}">Mini audit $149</a>
           <a href="${workflowAuditUrl}">Workflow audit $750</a>
         </div>

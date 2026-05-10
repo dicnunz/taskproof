@@ -1,7 +1,7 @@
 [
   {
     "id": "console-001",
-    "timestamp": "2026-04-19T02:41:10.810Z",
+    "timestamp": "2026-05-10T06:45:38.173Z",
     "stepId": "step-002",
     "type": "error",
     "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
@@ -13,7 +13,7 @@
   },
   {
     "id": "console-002",
-    "timestamp": "2026-04-19T02:41:10.810Z",
+    "timestamp": "2026-05-10T06:45:38.174Z",
     "stepId": "step-002",
     "type": "error",
     "text": "TaskProof demo sync failed {status: 404, url: /api/sync}",

@@ -48,6 +48,7 @@ const STATUS_LABELS: Record<StatusFilter, string> = {
   failed: "Failed"
 };
 const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
+const OPERATOR_OS_URL = "https://nicdunz.gumroad.com/l/agent-browser-operator-os";
 const MINI_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
 const WORKFLOW_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
@@ -523,14 +524,20 @@ export default function App() {
         <div>
           <div className="panel-heading">Support TaskProof</div>
           <p>
-            Optional support and written audits for redacted report bundles or
-            UI task specs. No app credentials, private auth flows, tokens,
+            Optional support, a self-serve browser/account/public-action control
+            kit, and written audits for redacted report bundles or UI task specs.
+            The kit covers lanes, approvals, proof, handoffs, and go/no-go checks;
+            it does not provide account access, custom setup, calls, or guaranteed
+            browser automation. No app credentials, private auth flows, tokens,
             session cookies, production data, call, or gated report access.
           </p>
         </div>
         <div className="support-links">
           <a href={SUPPORT_RECEIPT_URL} target="_blank" rel="noreferrer">
             Optional $5 support receipt
+          </a>
+          <a href={OPERATOR_OS_URL} target="_blank" rel="noreferrer">
+            Operator OS kit $39
           </a>
           <a href={MINI_AUDIT_URL} target="_blank" rel="noreferrer">
             Mini audit $149

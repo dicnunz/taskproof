@@ -11,6 +11,10 @@ Give it a target URL and a JSON or YAML spec. TaskProof runs the flow in Playwri
 
 If TaskProof saves you debugging time, the smallest support path is the $5 Codex run receipt: <https://nicdunz.gumroad.com/l/smrimu>.
 
+For a self-serve browser/account/public-action control kit, use Agent Browser Operator OS: <https://nicdunz.gumroad.com/l/agent-browser-operator-os>.
+
+It is a $39 template kit for lanes, approvals, proof, handoffs, and go/no-go checks. It does not fix the Codex Chrome plugin, guarantee browser automation, provide account access, include custom setup, or include calls.
+
 For a written no-call audit of a TaskProof report bundle or UI task spec, use the paid setup audit path:
 
 - Mini audit: <https://nicdunz.gumroad.com/l/agent-workflow-mini-audit>

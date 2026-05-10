@@ -1,13 +1,27 @@
 {
   "name": "taskproof",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "description": "Evidence-first UI task evaluation harness for local web apps.",
   "type": "module",
-  "funding": {
-    "type": "custom",
-    "url": "https://nicdunz.gumroad.com/l/smrimu"
-  },
+  "funding": [
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/smrimu"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-browser-operator-os"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit"
+    },
+    {
+      "type": "custom",
+      "url": "https://nicdunz.gumroad.com/l/agent-workflow-audit"
+    }
+  ],
   "engines": {
     "node": ">=20"
   },

@@ -4,6 +4,7 @@ import { Command, CommanderError } from "commander";
 import { executeTaskProof } from "./runner.js";
 
 const SUPPORT_RECEIPT_URL = "https://nicdunz.gumroad.com/l/smrimu";
+const OPERATOR_OS_URL = "https://nicdunz.gumroad.com/l/agent-browser-operator-os";
 const MINI_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-mini-audit";
 const WORKFLOW_AUDIT_URL = "https://nicdunz.gumroad.com/l/agent-workflow-audit";
 
@@ -20,8 +21,10 @@ export function supportText(): string {
   return [
     "Support TaskProof:",
     `- Optional $5 Codex run receipt: ${SUPPORT_RECEIPT_URL}`,
+    `- Agent Browser Operator OS self-serve kit for browser/account/public-action control templates: ${OPERATOR_OS_URL}`,
     `- Mini audit for a redacted TaskProof report bundle or UI task spec: ${MINI_AUDIT_URL}`,
     `- Full workflow audit for a redacted UI proof pipeline: ${WORKFLOW_AUDIT_URL}`,
+    "- Kit covers lanes, approvals, proof, handoffs, and go/no-go checks. It does not provide account access, custom setup, calls, or guaranteed browser automation.",
     "- Redacted bundles/specs/screenshots and public repo links only. No app credentials, private auth flows, tokens, session cookies, production data, or call required.",
     "- Use it if TaskProof saved debugging time or made a UI task review easier."
   ].join("\n");
@@ -46,7 +49,7 @@ export async function runCli(args: string[], io: CliIo = defaultIo): Promise<num
 
   program
     .command("support")
-    .description("Show the optional support receipt link")
+    .description("Show optional support, kit, and audit links")
     .action(() => {
       io.stdout.write(`${supportText()}\n`);
     });
